@@ -22,14 +22,15 @@ all: $(NAME)
 -include $(DFILES)
 
 $(NAME): $(OFILES)
-		@cd libft && make
+		@cd libft && $(MAKE)
 		$(CC) $(CFLAGS) $(OFILES) libft/libft.a $(MLX) -o $(NAME)
 
 clean:
-		@cd libft && make clean
+		@cd libft && $(MAKE) clean
 		@$(RM) $(OFILES) $(DFILES)
 
 fclean: clean
+		@cd libft && $(MAKE) fclean
 		@$(RM) $(NAME)
 
 re:		fclean all
