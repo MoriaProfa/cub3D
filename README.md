@@ -41,7 +41,7 @@ The *.cub file needs to contain one unique texture for each wall depending on wh
 Each configuration element in the *.cub file needs to start with its own type identifier (`NO`, `EA`, `SO`, `WE`, `C`, `F`). The map must be composed of only 6 possible characters: `0` for an empty space, `1` for a wall and `N`/`E`/`S`/`W` for the player's starting position and spawning orientation. The map must be surrounded by walls, have exactly one player spawn point and empty lines in between the map element are not tolerated.
 ### TLDR: Configuration and map file format (*.cub)
 **Configuration elements**
-- `NO`/`EA`/`SO`/`WE`- Unique paths to the texture for each wall direction
+- `NO`/`EA`/`SO`/`WE`- Unique paths to the textures for each wall direction
 - `C`- Ceiling color in R,G,B format (values 0-255)
 - `F`- Floor color in R,G,B format (values 0-255)
     
