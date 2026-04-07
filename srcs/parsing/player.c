@@ -1,15 +1,27 @@
-#include "../../cub3D.h"
+#include "cub3D.h"
 
 static void	set_orientation(t_game *game, char c)
 {
 	if (c == 'N')
-		game->orientation = O_NORTH;
+	{
+		game->spawn_orientation = O_NORTH;
+		game->direction = 0.0;
+	}
 	else if (c == 'E')
-		game->orientation = O_EAST;
+	{
+		game->spawn_orientation = O_EAST;
+		game->direction = 90.0;
+	}
 	else if (c == 'S')
-		game->orientation = O_SOUTH;
+	{
+		game->spawn_orientation = O_SOUTH;
+		game->direction = 180.0;
+	}
 	else if (c == 'W')
-		game->orientation = O_WEST;
+	{
+		game->direction = 270.0;
+		game->spawn_orientation = O_WEST;
+	}
 }
 
 void	check_player(t_game *game)

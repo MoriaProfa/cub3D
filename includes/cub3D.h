@@ -13,7 +13,12 @@
 #ifndef CUB3D_H
 # define CUB3D_H
 
-# include "libft/libft.h"
+# define WINDOW_WIDTH 1600
+# define WINDOW_HEIGHT 900
+
+# define FRAMES_PER_SECOND 60
+
+# include "../libft/libft.h"
 # include <X11/keysym.h>
 # include <errno.h>
 # include <fcntl.h>
@@ -66,25 +71,42 @@ typedef struct s_colors
 	int	ceiling;
 }		t_colors;
 
+typedef struct s_mlx_image
+{
+	void *image;
+	void *data_addr;
+	int width;
+	int height;
+	int bits_per_pixel;
+	int size_line;
+	int endian;
+} t_mlx_image;
+
+typedef struct s_textures {
+	t_mlx_image north;
+	t_mlx_image east;
+	t_mlx_image south;
+	t_mlx_image west;
+}	t_textures;
+
+typedef struct s_mlx {
+	void *mlx_ptr;
+	void *window;
+	t_mlx_image main_img;
+	t_textures textures;
+}	t_mlx;
+
 typedef struct s_game
 {
-	void	        *mlx;
-	void	        *window;
-	int		        win_width;
-	int		        win_height;
+	t_mlx *mlx;
 	char			**data;
 	t_paths			paths;
-	void    	    *texture_north;
-	void	        *texture_east;
-	void	        *texture_south;
-	void    	    *texture_west;
 	t_checks		checks;
 	t_colors		colors;
-    int		        player_x;
-	int		        player_y;
-    t_orientation   orientation;
-	int 		    img_width;
-	int	    	    img_height;
+  double player_x;
+	double player_y;
+	double direction;
+  t_orientation   spawn_orientation;
 	int		        exit_ind;
 	t_map	        map;
 }			        t_game;
@@ -116,7 +138,20 @@ size_t	get_array_size(char **array);
 void	free_array(char **array);
 
 // srcs/utils/exit.c
+void free_game(t_game *game);
 void	close_game(t_game *game);
 void	error_exit(t_game *game, char *message);
+
+// srcs/graphical/init.c
+t_mlx *init_mlx(t_game *game);
+void cleanup_mlx(t_mlx **ptr);
+
+// srcs/graphical/events.c
+int key_hook(int keycode, void *param);
+int loop_hook(void *param);
+
+// srcs/graphical/rendering.c
+void draw_background(t_game *game);
+
 
 #endif

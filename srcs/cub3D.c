@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "cub3D.h"
+#include <mlx.h>
 
 //just for parsing TESTING (beginning)
 void parser_test_printing(t_game *game)
@@ -27,53 +28,19 @@ void parser_test_printing(t_game *game)
 	while (game->map.data[++i])
 		printf("%s\n", game->map.data[i]);
 	printf("\n---Player:---\nSpawn orientation: ");
-	if (game->orientation == O_NONE)
-		printf("None\n");
-	else if (game->orientation == O_NORTH)
-		printf("North\n");
-	else if (game->orientation == O_EAST)
-		printf("East\n");
-	else if (game->orientation == O_SOUTH)
-		printf("South\n");
-	else if (game->orientation == O_WEST)
+	if (game->spawn_orientation == O_NONE)
+		printf("None");
+	else if (game->spawn_orientation == O_NORTH)
+		printf("North");
+	else if (game->spawn_orientation == O_EAST)
+		printf("East");
+	else if (game->spawn_orientation == O_SOUTH)
+		printf("South");
+	else if (game->spawn_orientation == O_WEST)
 		printf("West\n");
-	printf("\n");
+	printf(" (Angle: %.1f°)\n", game->direction);
+	printf("Spawn Position: x: %.0f, y: %.0f\n", game->player_x, game->player_y);
 }//just for parsing TESTING (end)
-
-void	check_mlx_textures(t_game *game)
-{
-	if (!game->texture_north)
-		error_exit(game, "MLX north image failed\n");
-	if (!game->texture_east)
-		error_exit(game, "MLX east image failed\n");
-	if (!game->texture_south)
-		error_exit(game, "MLX south image failed\n");
-	if (!game->texture_west)
-		error_exit(game, "MLX west image failed\n");
-}
-
-void	initialize_mlx_win_img(t_game *game)
-{
-	if (game->mlx)
-		game->window = mlx_new_window(game->mlx, game->win_width,
-				game->win_height, "cub3D");
-	else
-		error_exit(game, "MLX init failed\n");
-	if (game->window)
-	{//floor&ceiling are missing, it is suggested to create an image with the colors first and to pass that to mlx instead of many pixels
-		game->texture_north = mlx_xpm_file_to_image(game->mlx,
-				game->paths.north, &game->img_width, &game->img_height);
-		game->texture_east = mlx_xpm_file_to_image(game->mlx, game->paths.east,
-				&game->img_width, &game->img_height);
-		game->texture_south = mlx_xpm_file_to_image(game->mlx,
-				game->paths.south, &game->img_width, &game->img_height);
-		game->texture_west = mlx_xpm_file_to_image(game->mlx, game->paths.west,
-				&game->img_width, &game->img_height);
-	}
-	else
-		error_exit(game, "MLX window failed\n");
-	check_mlx_textures(game);
-}
 
 /*
 void	move_player(int new_x, int new_y, t_game *game)
@@ -141,11 +108,14 @@ int	main(int argc, char **argv)
 		return (1);
 	}
 	ft_bzero(&game, sizeof(t_game));
-	game.img_width = 64;
-	game.img_height = 64;
 	game.map.min_width = INT_MAX;
 	read_extract_and_validate_file(&game, argv[1]); //not done yet, map validation is still incomplete
 	parser_test_printing(&game);//TESTING ONLY FUNCTION
+	game.mlx = init_mlx(&game);
+	if (!game.mlx) {
+		return (free_game(&game), 1);
+	}
+	mlx_loop(game.mlx->mlx_ptr);
 	// execution part:
 	/*
 	//setting game.win_width and game.win_height is missing
@@ -157,5 +127,6 @@ int	main(int argc, char **argv)
 	mlx_hook(game.window, 17, 0, close_game, &game);
 	return (mlx_loop(game.mlx), 0);
 	*/
-	return (close_game(&game), 0);//TESTING - as long as mlx is not implemented necessary to clean up
+	free_game(&game);
+	return (game.exit_ind);
 }
