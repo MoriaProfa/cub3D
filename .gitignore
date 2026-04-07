@@ -1,0 +1,7 @@
+*.o
+*.d
+cub3D
+libft/libft.a
+vgcore.*
+compile_commands.json
+.cache/
