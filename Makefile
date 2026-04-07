@@ -5,14 +5,14 @@ CFLAGS = -Wall -Wextra -Werror -MMD -MP -g
 RM = rm -f
 
 CFILES = cub3D.c \
-	parsing/checks.c \
-	parsing/colors.c \
-	parsing/map.c \
-	parsing/parsing.c \
-	parsing/paths.c \
-	parsing/player.c \
-	utils/array_helpers.c \
-	utils/exit.c
+	srcs/parsing/checks.c \
+	srcs/parsing/colors.c \
+	srcs/parsing/map.c \
+	srcs/parsing/parsing.c \
+	srcs/parsing/paths.c \
+	srcs/parsing/player.c \
+	srcs/utils/array_helpers.c \
+	srcs/utils/exit.c
 OFILES = $(CFILES:.c=.o)
 DFILES = $(CFILES:.c=.d)
 
