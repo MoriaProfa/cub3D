@@ -1,7 +1,7 @@
-NO ./sprites/North.xpm
-SO ./sprites/South.xpm
-WE ./sprites/West.xpm
-EA ./sprites/East.xpm
+NO ./sprites/WallNorth.xpm
+SO ./sprites/WallSouth.xpm
+WE ./sprites/WallWest.xpm
+EA ./sprites/WallEast.xpm
 
 F 220,100,0
 C 225,30,0
