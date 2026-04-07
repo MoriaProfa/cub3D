@@ -1,4 +1,4 @@
-#include "../cub3D.h"
+#include "../../cub3D.h"
 
 static bool	compare_pathfiles(t_game *game)
 {

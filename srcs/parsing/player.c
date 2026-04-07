@@ -1,4 +1,4 @@
-#include "../cub3D.h"
+#include "../../cub3D.h"
 
 static void	set_orientation(t_game *game, char c)
 {

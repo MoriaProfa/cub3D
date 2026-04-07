@@ -1,4 +1,4 @@
-#include "../cub3D.h"
+#include "../../cub3D.h"
 
 static int	numcheck(char c)
 {

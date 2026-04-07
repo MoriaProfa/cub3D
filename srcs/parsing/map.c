@@ -1,4 +1,4 @@
-#include "../cub3D.h"
+#include "../../cub3D.h"
 
 static bool	check_for_end(char *map, int i)
 {

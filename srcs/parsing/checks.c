@@ -1,4 +1,4 @@
-#include "../cub3D.h"
+#include "../../cub3D.h"
 
 bool	check_for_double(t_game *game, char c)
 {

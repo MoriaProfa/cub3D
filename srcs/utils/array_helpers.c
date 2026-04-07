@@ -1,4 +1,4 @@
-#include "../cub3D.h"
+#include "../../cub3D.h"
 
 void	*grow_array(void *old_array, size_t old_capacity, size_t new_capacity,
 		size_t size)

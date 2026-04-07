@@ -1,4 +1,4 @@
-#include "../cub3D.h"
+#include "../../cub3D.h"
 
 static char	*ensure_buf_capacity(char *buf, size_t *size, size_t needed)
 {

@@ -6,7 +6,7 @@
 /*   By: astehl <astehl@student.42vienna.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/02 18:17:35 by astehl            #+#    #+#             */
-/*   Updated: 2026/04/03 14:59:41 by astehl           ###   ########.fr       */
+/*   Updated: 2026/04/07 20:48:09 by astehl           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,34 +89,33 @@ typedef struct s_game
 	t_map	        map;
 }			        t_game;
 
-// parsing//checks.c
+// srcs/parsing/checks.c
 bool	check_for_double(t_game *game, char c);
 void	checks_complete(t_game *game);
 
-// parsing/colors.c
+// srcs/parsing/colors.c
 void convert_and_add_color(t_game *game, char *line, char c);
 
-// parsing/map.c
+// srcs/parsing/map.c
 char	*find_map_start(char *buf);
 void	first_validity_check_map(t_game *game, char *map, char *buf);
 void	second_validity_check_map(t_game *game);
 
-// parsing/parsing.c
+// srcs/parsing/parsing.c
 void	read_extract_and_validate_file(t_game *game, char *fn);
 
-// parsing/paths.c
+// srcs/parsing/paths.c
 void	check_and_add_path(t_game *game, char *path, char c);
 
-// parsing/player.c
+// srcs/parsing/player.c
 void	check_player(t_game *game);
 
-// utils/array_helpers.c
+// srcs/utils/array_helpers.c
 void	*grow_array(void *old_array, size_t old_capacity, size_t new_capacity, size_t size);
 size_t	get_array_size(char **array);
 void	free_array(char **array);
 
-
-// utils/exit.c
+// srcs/utils/exit.c
 void	close_game(t_game *game);
 void	error_exit(t_game *game, char *message);
 
