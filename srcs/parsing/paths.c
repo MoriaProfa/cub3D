@@ -6,7 +6,7 @@
 /*   By: astehl <astehl@student.42vienna.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/15 21:53:04 by astehl            #+#    #+#             */
-/*   Updated: 2026/04/15 21:54:39 by astehl           ###   ########.fr       */
+/*   Updated: 2026/04/20 17:21:50 by astehl           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ static void	add_path(t_game *game, char *path, char c)
 
 void	check_and_add_path(t_game *game, char *path, char c)
 {
-	int		len;
+	int	len;
 
 	if (check_for_double(game, c))
 		error_exit(game, "Already existing path for a direction found\n");

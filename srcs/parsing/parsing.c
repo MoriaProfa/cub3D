@@ -6,7 +6,7 @@
 /*   By: astehl <astehl@student.42vienna.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/15 21:52:58 by astehl            #+#    #+#             */
-/*   Updated: 2026/04/15 21:54:51 by astehl           ###   ########.fr       */
+/*   Updated: 2026/04/20 17:30:51 by astehl           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,10 +55,9 @@ static char	*read_into_buffer(int fd)
 
 static void	add_game_config_data(t_game *game, char *line)
 {
-	int		i;
+	int	i;
 
 	i = 0;
-	//printf("\nline is: %s\n", line);//TESTING PRINTF
 	checks_complete(game);
 	while (line[i] == ' ')
 		i++;
@@ -81,7 +80,7 @@ static void	add_game_config_data(t_game *game, char *line)
 static void	extract_data(t_game *game, char *buf)
 {
 	int	i;
-	
+
 	i = -1;
 	game->data = ft_split(buf, '\n');
 	if (!game->data)
@@ -115,8 +114,7 @@ void	read_extract_and_validate_file(t_game *game, char *fn)
 	close(fd);
 	if (!buf)
 		error_exit(game, "Buffer memory allocation failed\n");
-	//printf("buf is:\n%s\n\n", buf); // TESTING PRINTF
-	if (ft_strlen(buf) < 61)// need to figure out the shortest.cub file possible -> 61 bytes?
+	if (ft_strlen(buf) < 61)
 		(free(buf), error_exit(game, "File is empty/too small\n"));
 	first_validity_check_map(game, find_map_start(buf), buf);
 	extract_data(game, buf);

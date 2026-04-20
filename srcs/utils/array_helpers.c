@@ -6,7 +6,7 @@
 /*   By: astehl <astehl@student.42vienna.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/15 21:53:12 by astehl            #+#    #+#             */
-/*   Updated: 2026/04/15 21:54:17 by astehl           ###   ########.fr       */
+/*   Updated: 2026/04/20 17:21:10 by astehl           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void	*grow_array(void *old_array, size_t old_capacity, size_t new_capacity,
 
 size_t	get_array_size(char **array)
 {
-	size_t i;
+	size_t	i;
 
 	i = 0;
 	if (!array || !array[0])

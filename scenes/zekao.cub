@@ -1,10 +1,10 @@
-NO ./sprites/WallNorth.xpm
-SO ./sprites/WallSouth.xpm
-WE ./sprites/WallWest.xpm
-EA ./sprites/WallEast.xpm
+NO ./sprites/SDV_Bookcase.xpm
+SO ./sprites/SDV_Chests.xpm
+WE ./sprites/SDV_Plants.xpm
+EA ./sprites/SDV_Window_with_Statues.xpm
 
-F 220,100,0
-C 225,30,0
+F 153,204,0
+C 0,0,255
 
 1111111
 1000111

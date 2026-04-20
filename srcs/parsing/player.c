@@ -6,7 +6,7 @@
 /*   By: astehl <astehl@student.42vienna.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/15 21:53:04 by astehl            #+#    #+#             */
-/*   Updated: 2026/04/15 21:54:23 by astehl           ###   ########.fr       */
+/*   Updated: 2026/04/20 17:21:43 by astehl           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,15 +39,15 @@ static void	set_orientation(t_game *game, char c)
 
 void	check_player(t_game *game)
 {
-	unsigned int	i;
+	int				i;
 	unsigned int	j;
 	unsigned int	player_count;
 	char			*orientation_set;
 
-	i = 0;
+	i = -1;
 	player_count = 0;
 	orientation_set = "NESW";
-	while (game->map.data[i])
+	while (game->map.data[++i])
 	{
 		j = 0;
 		while (game->map.data[i][j])
@@ -61,7 +61,6 @@ void	check_player(t_game *game)
 			}
 			j++;
 		}
-		i++;
 	}
 	if (player_count != 1)
 		error_exit(game, "Exactly one player is mandatory\n");

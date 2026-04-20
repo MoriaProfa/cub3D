@@ -6,7 +6,7 @@
 /*   By: astehl <astehl@student.42vienna.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/15 21:52:53 by astehl            #+#    #+#             */
-/*   Updated: 2026/04/15 21:54:54 by astehl           ###   ########.fr       */
+/*   Updated: 2026/04/20 17:30:19 by astehl           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ char	*find_map_start(char *buf)
 		if (buf[i] == '\n')
 		{
 			i++;
-			continue;
+			continue ;
 		}
 		lines++;
 		while (buf[i] && buf[i] != '\n')
@@ -51,23 +51,24 @@ char	*find_map_start(char *buf)
 	return (NULL);
 }
 
-static void	check_surrounding_tiles(t_game *game, int i, int j, char *valid_chars)
+static void	check_surrounding_tiles(t_game *game, int i, int j,
+		char *valid_chars)
 {
 	char	**map;
-	
+
 	map = game->map.data;
 	if (j - 1 < 0 || !ft_strchr(valid_chars, map[i][j - 1]))
 		error_exit(game, "2nd map validation part failed\n");
-	if (j + 1 >= (int)ft_strlen(map[i]) 
-		|| !ft_strchr(valid_chars, map[i][j + 1]))
+	if (j + 1 >= (int)ft_strlen(map[i]) || !ft_strchr(valid_chars, map[i][j
+			+ 1]))
 		error_exit(game, "2nd map validation part failed\n");
-	if (i - 1 < 0 || j >= (int)ft_strlen(map[i - 1]) 
-		|| !ft_strchr(valid_chars, map[i - 1][j]))
+	if (i - 1 < 0 || j >= (int)ft_strlen(map[i - 1]) || !ft_strchr(valid_chars,
+			map[i - 1][j]))
 		error_exit(game, "2nd map validation part failed\n");
-	if (!map[i + 1] || j >= (int)ft_strlen(map[i + 1]) 
+	if (!map[i + 1] || j >= (int)ft_strlen(map[i + 1])
 		|| !ft_strchr(valid_chars, map[i + 1][j]))
 		error_exit(game, "2nd map validation part failed\n");
-}//maybe write sth extra for first and last row of the map to be more specific
+}
 
 void	first_validity_check_map(t_game *game, char *map, char *buf)
 {
@@ -94,7 +95,6 @@ void	first_validity_check_map(t_game *game, char *map, char *buf)
 	}
 	if (map[i] == '\0')
 		game->map.height++;
-	printf("Map height: %i\n", game->map.height);//TESTING PRINTF
 	if (game->map.height < 3)
 		(free(buf), error_exit(game, "Map is too small\n"));
 }
@@ -120,7 +120,7 @@ void	second_validity_check_map(t_game *game)
 		{
 			if (map[i][j] == '0')
 				check_surrounding_tiles(game, i, j, "01NESW");
-			else if (ft_strchr("NESW", map[i][j]))	
+			else if (ft_strchr("NESW", map[i][j]))
 				check_surrounding_tiles(game, i, j, "01");
 		}
 	}

@@ -6,7 +6,7 @@
 /*   By: astehl <astehl@student.42vienna.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/15 21:53:16 by astehl            #+#    #+#             */
-/*   Updated: 2026/04/15 21:54:08 by astehl           ###   ########.fr       */
+/*   Updated: 2026/04/20 17:18:17 by astehl           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ static void	free_paths(t_game *game)
 		free(game->paths.west);
 }
 
-void free_game(t_game *game)
+void	free_game(t_game *game)
 {
 	if (game && game->data)
 		free_array(game->data);

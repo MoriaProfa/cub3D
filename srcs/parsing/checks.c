@@ -6,7 +6,7 @@
 /*   By: astehl <astehl@student.42vienna.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/15 21:49:52 by astehl            #+#    #+#             */
-/*   Updated: 2026/04/15 21:54:59 by astehl           ###   ########.fr       */
+/*   Updated: 2026/04/20 17:23:27 by astehl           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,8 @@ bool	check_for_double(t_game *game, char c)
 
 void	checks_complete(t_game *game)
 {
-	if (!game->checks.complete && game->checks.north && game->checks.east && 
-			game->checks.south && game->checks.west && game->checks.ceiling && 
-			game->checks.floor)
+	if (!game->checks.complete && game->checks.north && game->checks.east
+		&& game->checks.south && game->checks.west && game->checks.ceiling
+		&& game->checks.floor)
 		game->checks.complete = true;
 }
