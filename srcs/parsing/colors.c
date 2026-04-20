@@ -6,7 +6,7 @@
 /*   By: astehl <astehl@student.42vienna.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/15 21:52:47 by astehl            #+#    #+#             */
-/*   Updated: 2026/04/20 17:38:17 by astehl           ###   ########.fr       */
+/*   Updated: 2026/04/20 17:45:05 by astehl           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,13 +102,13 @@ void	convert_and_add_color(t_game *game, char *line, char c)
 	check_color_validity(game, tmp);
 	if (c == 'F')
 	{
-		game->colors.floor = (cub3d_atoi(tmp[0]) << 16) | (cub3d_atoi(tmp[1])
-				<< 8) | cub3d_atoi(tmp[2]);
+		game->colors.floor = (cub3d_atoi(tmp[0]) << 16)
+			| (cub3d_atoi(tmp[1]) << 8) | cub3d_atoi(tmp[2]);
 		game->checks.floor = true;
 		return (free_array(tmp));
 	}
-	game->colors.ceiling = (cub3d_atoi(tmp[0]) << 16) | (cub3d_atoi(tmp[1])
-			<< 8) | cub3d_atoi(tmp[2]);
+	game->colors.ceiling = (cub3d_atoi(tmp[0]) << 16)
+		| (cub3d_atoi(tmp[1]) << 8) | cub3d_atoi(tmp[2]);
 	game->checks.ceiling = true;
 	free_array(tmp);
 }
