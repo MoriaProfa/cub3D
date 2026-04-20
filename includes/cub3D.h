@@ -38,6 +38,16 @@ typedef enum    e_orientation
     O_WEST
 }   t_orientation;
 
+typedef enum e_keys
+{
+	O_TURN_LEFT = 1,
+	O_TURN_RIGHT = 1 << 1,
+	O_MOVE_FORWARD = 1 << 2,
+	O_MOVE_BACKWARD = 1 << 3,
+	O_MOVE_LEFT = 1 << 4,
+	O_MOVE_RIGHT = 1 << 5,
+}	t_keys;
+
 typedef struct	s_checks
 {
 	bool	north;
@@ -105,11 +115,38 @@ typedef struct s_game
 	t_colors		colors;
   double player_x;
 	double player_y;
+	double dx;
+	double dy;
+	double plane_x;
+	double plane_y;
 	double direction;
   t_orientation   spawn_orientation;
+  int keys_pressed;
 	int		        exit_ind;
 	t_map	        map;
 }			        t_game;
+
+typedef enum e_axis {
+  X_AXIS,
+  Y_AXIS
+}  t_axis;
+
+typedef struct s_ray
+{
+  double length;
+  t_orientation wall_hit;
+  double hit_point;
+} t_ray;
+
+typedef struct s_ray_props
+{
+	double			direction;
+	double			coordinate;
+	double			delta_dist;
+	double			side_dist;
+	int				step;
+	int				map;
+}					t_ray_props;
 
 // srcs/parsing/checks.c
 bool	check_for_double(t_game *game, char c);
@@ -147,11 +184,19 @@ t_mlx *init_mlx(t_game *game);
 void cleanup_mlx(t_mlx **ptr);
 
 // srcs/graphical/events.c
-int key_hook(int keycode, void *param);
+int key_press_hook(int keycode, void *param);
+int key_release_hook(int keycode, void *param);
 int loop_hook(void *param);
 
 // srcs/graphical/rendering.c
 void draw_background(t_game *game);
+void draw_cubes(t_game *game);
 
+// src/graphical/raycasting.c
+t_ray		cast_ray(const t_game *game, double dx, double dy);
+
+// src/graphical/move_rotate.c
+void	handle_rotation(t_game *game, long loop_time);
+void	handle_movement(t_game *game, int keys_pressed, long loop_time);
 
 #endif

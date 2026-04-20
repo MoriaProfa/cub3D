@@ -11,27 +11,28 @@
 /* ************************************************************************** */
 
 #include "cub3D.h"
+#include <math.h>
 
 static void	set_orientation(t_game *game, char c)
 {
 	if (c == 'N')
 	{
 		game->spawn_orientation = O_NORTH;
-		game->direction = 0.0;
+		game->direction = M_PI / 2.0;
 	}
 	else if (c == 'E')
 	{
 		game->spawn_orientation = O_EAST;
-		game->direction = 90.0;
+		game->direction = 0;
 	}
 	else if (c == 'S')
 	{
 		game->spawn_orientation = O_SOUTH;
-		game->direction = 180.0;
+		game->direction = M_PI * 1.5;
 	}
 	else if (c == 'W')
 	{
-		game->direction = 270.0;
+		game->direction = M_PI;
 		game->spawn_orientation = O_WEST;
 	}
 }
@@ -55,6 +56,8 @@ void	check_player(t_game *game)
 			{
 				player_count++;
 				set_orientation(game, game->map.data[i][j]);
+				game->player_y = i + 0.5;
+				game->player_x = j + 0.5;
 			}
 			j++;
 		}

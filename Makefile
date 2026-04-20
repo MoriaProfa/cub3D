@@ -14,22 +14,25 @@ CFILES = cub3D.c \
 	utils/array_helpers.c \
 	utils/exit.c \
 	graphical/init.c \
+	graphical/free.c \
 	graphical/events.c \
-	graphical/rendering.c
+	graphical/rendering.c \
+	graphical/raycasting.c \
+	graphical/move_rotate.c
 
 SRCDIR = srcs
 OBJDIR = objs
 OFILES = $(patsubst %.c, $(OBJDIR)/%.o, $(CFILES))
 DFILES = $(patsubst %.c, $(OBJDIR)/%.D, $(CFILES))
 
-MLX = -lmlx -lX11 -lXext
+LDFLAGS = -lmlx -lX11 -lXext -lm
 
 all: $(NAME)
 -include $(DFILES)
 
 $(NAME): $(OFILES)
 		@cd libft && $(MAKE)
-		$(CC) $(CFLAGS) $(OFILES) libft/libft.a $(MLX) -o $(NAME)
+		$(CC) $(CFLAGS) $(OFILES) libft/libft.a $(LDFLAGS) -o $(NAME)
 
 $(OBJDIR)/%.o: $(SRCDIR)/%.c
 	@mkdir -p $(@D)

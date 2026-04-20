@@ -31,14 +31,13 @@ void parser_test_printing(t_game *game)
 	if (game->spawn_orientation == O_NONE)
 		printf("None");
 	else if (game->spawn_orientation == O_NORTH)
-		printf("North");
+		printf("North\n");
 	else if (game->spawn_orientation == O_EAST)
-		printf("East");
+		printf("East\n");
 	else if (game->spawn_orientation == O_SOUTH)
-		printf("South");
+		printf("South\n");
 	else if (game->spawn_orientation == O_WEST)
 		printf("West\n");
-	printf(" (Angle: %.1f°)\n", game->direction);
 	printf("Spawn Position: x: %.0f, y: %.0f\n", game->player_x, game->player_y);
 }//just for parsing TESTING (end)
 
@@ -115,6 +114,11 @@ int	main(int argc, char **argv)
 	if (!game.mlx) {
 		return (free_game(&game), 1);
 	}
+	printf("Player start: %f, %f\n", game.player_x, game.player_y);
+	game.dx = cos(game.direction);
+	game.dy = -sin(game.direction);
+	game.plane_x = -game.dy;
+	game.plane_y = game.dx;
 	mlx_loop(game.mlx->mlx_ptr);
 	// execution part:
 	/*
