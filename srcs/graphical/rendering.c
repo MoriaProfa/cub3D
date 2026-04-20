@@ -14,10 +14,10 @@
 #include <assert.h>
 #include <math.h>
 
-static void				draw_vertical(t_game *game, size_t column,
-							const t_ray *ray);
-static t_line			fill_line_props(t_game *game, const t_ray *ray,
-							size_t column);
+static void			draw_vertical(t_game *game, size_t column,
+						const t_ray *ray);
+static t_line		fill_line_props(t_game *game, const t_ray *ray,
+						size_t column);
 
 void	draw_background(t_game *game)
 {
@@ -31,8 +31,8 @@ void	draw_background(t_game *game)
 	i = 0;
 	while (i < WINDOW_WIDTH * WINDOW_HEIGHT / 2)
 	{
-		ft_memcpy(ceiling++, &game->colors.ceiling, sizeof(int));
-		ft_memcpy(floor++, &game->colors.floor, sizeof(int));
+		*ceiling++ = game->colors.ceiling;
+		*floor++ = game->colors.floor;
 		i++;
 	}
 }
@@ -70,7 +70,7 @@ static t_mlx_image	*select_texture(const t_game *game, const t_ray *ray)
 static void	draw_vertical(t_game *game, size_t column, const t_ray *ray)
 {
 	t_line	line;
-	char	*xpm_offset;
+	int		*xpm_offset;
 	int		texture_y;
 	size_t	i;
 
@@ -79,10 +79,10 @@ static void	draw_vertical(t_game *game, size_t column, const t_ray *ray)
 	while (i < line.draw_height - line.skip / 2)
 	{
 		texture_y = line.tex_img->height * i / line.draw_height;
-		xpm_offset = line.tex_img->data_addr + (line.texture_x * 4) + (texture_y
-				* line.tex_img->width * 4);
-		ft_memcpy(line.main_img_data, xpm_offset, sizeof(int));
-		line.main_img_data += WINDOW_WIDTH * 4;
+		xpm_offset = (int *)line.tex_img->data_addr + line.texture_x + texture_y
+			* line.tex_img->width;
+		*line.main_img_data = *xpm_offset;
+		line.main_img_data += WINDOW_WIDTH;
 		i++;
 	}
 }
@@ -100,7 +100,7 @@ static t_line	fill_line_props(t_game *game, const t_ray *ray, size_t column)
 		line.skip = 0;
 	line.start_line = ((WINDOW_HEIGHT - line.draw_height + line.skip) / 2)
 		* WINDOW_WIDTH * 4;
-	line.main_img_data = game->mlx->main_img.data_addr + line.start_line
-		+ column * 4;
+	line.main_img_data = (int *)(game->mlx->main_img.data_addr + line.start_line
+			+ column * 4);
 	return (line);
 }

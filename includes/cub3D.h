@@ -152,7 +152,7 @@ typedef struct s_line
 {
 	const t_mlx_image	*tex_img;
 	int					texture_x;
-	char				*main_img_data;
+	int *main_img_data;
 	size_t				draw_height;
 	size_t				skip;
 	size_t				start_line;
