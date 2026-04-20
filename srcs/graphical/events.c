@@ -92,6 +92,7 @@ static long	time_diff(void)
 		return (last_update = current_time, LONG_MAX);
 	time_diff = (current_time.tv_sec - last_update.tv_sec) * 1000000
 		+ current_time.tv_usec - last_update.tv_usec;
-	last_update = current_time;
+	if (time_diff > 1000000 / FRAMES_PER_SECOND)
+		last_update = current_time;
 	return (time_diff);
 }
