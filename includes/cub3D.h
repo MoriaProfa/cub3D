@@ -84,7 +84,7 @@ typedef struct s_colors
 typedef struct s_mlx_image
 {
 	void *image;
-	void *data_addr;
+	char *data_addr;
 	int width;
 	int height;
 	int bits_per_pixel;
@@ -147,6 +147,17 @@ typedef struct s_ray_props
 	int				step;
 	int				map;
 }					t_ray_props;
+
+typedef struct s_line
+{
+	const t_mlx_image	*tex_img;
+	int					texture_x;
+	char				*main_img_data;
+	size_t				draw_height;
+	size_t				skip;
+	size_t				start_line;
+}						t_line;
+
 
 // srcs/parsing/checks.c
 bool	check_for_double(t_game *game, char c);
