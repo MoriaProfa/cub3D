@@ -11,7 +11,6 @@
 /* ************************************************************************** */
 
 #include "cub3D.h"
-#include <assert.h>
 #include <math.h>
 
 static void			draw_vertical(t_game *game, size_t column,
@@ -56,12 +55,14 @@ void	draw_cubes(t_game *game)
 
 static t_mlx_image	*select_texture(const t_game *game, const t_ray *ray)
 {
-	assert(ray->wall_hit != O_NONE);
-	if (ray->wall_hit == O_NORTH)
+	if ((ray->wall_hit == O_NORTH && !TEXTURE_FLIP) || (ray->wall_hit == O_SOUTH
+			&& TEXTURE_FLIP))
 		return (&game->mlx->textures.north);
-	else if (ray->wall_hit == O_SOUTH)
+	else if ((ray->wall_hit == O_SOUTH && !TEXTURE_FLIP)
+		|| (ray->wall_hit == O_NORTH && TEXTURE_FLIP))
 		return (&game->mlx->textures.south);
-	else if (ray->wall_hit == O_WEST)
+	else if ((ray->wall_hit == O_WEST && !TEXTURE_FLIP)
+		|| (ray->wall_hit == O_EAST && TEXTURE_FLIP))
 		return (&game->mlx->textures.west);
 	else
 		return (&game->mlx->textures.east);

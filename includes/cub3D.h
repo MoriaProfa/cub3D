@@ -20,6 +20,7 @@
 
 # define ROTATE_SPEED 0.0000015
 # define MOVE_SPEED 0.000003
+# define TEXTURE_FLIP 0
 
 # include "../libft/libft.h"
 # include <X11/keysym.h>
