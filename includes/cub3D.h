@@ -108,6 +108,7 @@ typedef struct s_mlx
 	void				*window;
 	t_mlx_image			main_img;
 	t_textures			textures;
+	bool				wayland;
 }						t_mlx;
 
 typedef struct s_game
@@ -128,6 +129,7 @@ typedef struct s_game
 	int					keys_pressed;
 	int					exit_ind;
 	t_map				map;
+	bool				mouse_enabled;
 }						t_game;
 
 typedef enum e_axis
@@ -197,7 +199,7 @@ void					close_game(t_game *game);
 void					error_exit(t_game *game, char *message);
 
 // srcs/graphical/init.c
-t_mlx					*init_mlx(t_game *game);
+t_mlx					*init_mlx(t_game *game, char **envp);
 void					cleanup_mlx(t_mlx **ptr);
 void					set_initial_direction(t_game *game);
 

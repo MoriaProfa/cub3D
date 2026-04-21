@@ -16,9 +16,9 @@
 
 static bool	init_texture(void *mlx_ptr, t_mlx_image *image, char *path);
 static bool	init_image(void *mlx_ptr, t_mlx_image *image);
-static void	setup_hooks(t_game *game, t_mlx *mlx);
+static void	setup_hooks(t_game *game, t_mlx *mlx, char **envp);
 
-t_mlx	*init_mlx(t_game *game)
+t_mlx	*init_mlx(t_game *game, char **envp)
 {
 	t_mlx	*mlx;
 	t_paths	*paths;
@@ -44,7 +44,7 @@ t_mlx	*init_mlx(t_game *game)
 			"cub3D");
 	if (!mlx->window)
 		return (perror("cub3D: mlx_new_window"), cleanup_mlx(&mlx), NULL);
-	return (setup_hooks(game, mlx), mlx);
+	return (setup_hooks(game, mlx, envp), mlx);
 }
 
 void	set_initial_direction(t_game *game)
@@ -78,11 +78,24 @@ static bool	init_image(void *mlx_ptr, t_mlx_image *image)
 	return (true);
 }
 
-static void	setup_hooks(t_game *game, t_mlx *mlx)
+static void	setup_hooks(t_game *game, t_mlx *mlx, char **envp)
 {
+	size_t	i;
+
 	mlx_key_hook(mlx->window, key_release_hook, game);
 	mlx_hook(mlx->window, DestroyNotify, 0, mlx_loop_end, mlx->mlx_ptr);
 	mlx_hook(mlx->window, 2, KeyPressMask, key_press_hook, game);
 	mlx_hook(mlx->window, 6, PointerMotionMask, mouse_move_hook, game);
 	mlx_loop_hook(mlx->mlx_ptr, loop_hook, game);
+	i = 0;
+	while (envp && envp[i])
+	{
+		if (ft_strncmp(envp[i], "XDG_SESSION_TYPE=", 17) == 0)
+		{
+			if (ft_strncmp(envp[i] + 17, "wayland", 8) == 0)
+				mlx->wayland = true;
+			return ;
+		}
+		i++;
+	}
 }

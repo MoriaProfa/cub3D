@@ -36,6 +36,8 @@ int	key_release_hook(int keycode, void *param)
 		game->keys_pressed ^= O_MOVE_BACKWARD;
 	else if (keycode == XK_d)
 		game->keys_pressed ^= O_MOVE_RIGHT;
+	else if (keycode == XK_m)
+		game->mouse_enabled = !game->mouse_enabled;
 	return (0);
 }
 
@@ -68,12 +70,21 @@ int	mouse_move_hook(int x, int y, void *param)
 
 	(void)y;
 	game = param;
-	if (prev_x != -1)
+	if (!game->mouse_enabled)
+		return (prev_x = x, 0);
+	if (prev_x != -1 && prev_x != x)
 	{
 		diff_x = x - prev_x;
 		angle = diff_x / (double)WINDOW_WIDTH * M_PI;
 		rotate_vector(&game->dx, &game->dy, angle);
 		rotate_vector(&game->plane_x, &game->plane_y, angle);
+		if (!game->mlx->wayland)
+		{
+			mlx_mouse_move(game->mlx->mlx_ptr, game->mlx->window, WINDOW_WIDTH
+				/ 2, WINDOW_HEIGHT / 2);
+			prev_x = WINDOW_WIDTH / 2;
+			return (0);
+		}
 	}
 	prev_x = x;
 	return (0);

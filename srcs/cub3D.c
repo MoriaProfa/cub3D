@@ -13,7 +13,7 @@
 #include "cub3D.h"
 #include <mlx.h>
 
-int	main(int argc, char **argv)
+int	main(int argc, char **argv, char **envp)
 {
 	t_game	game;
 
@@ -26,7 +26,7 @@ int	main(int argc, char **argv)
 	ft_bzero(&game, sizeof(t_game));
 	game.map.min_width = INT_MAX;
 	read_extract_and_validate_file(&game, argv[1]);
-	game.mlx = init_mlx(&game);
+	game.mlx = init_mlx(&game, envp);
 	if (!game.mlx)
 	{
 		return (free_game(&game), 1);
