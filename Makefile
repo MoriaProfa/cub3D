@@ -30,6 +30,8 @@ LDFLAGS = -lmlx -lX11 -lXext -lm
 all: $(NAME)
 -include $(DFILES)
 
+bonus: $(NAME)
+
 $(NAME): $(OFILES)
 		@cd libft && $(MAKE)
 		$(CC) $(CFLAGS) $(OFILES) libft/libft.a $(LDFLAGS) -o $(NAME)
@@ -52,4 +54,4 @@ re:		fclean all
 compile_commands:
 		@bear -- $(MAKE) re
 
-.PHONY: all clean fclean re compile_commands
+.PHONY: all clean fclean re bonus compile_commands
