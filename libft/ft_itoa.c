@@ -6,7 +6,7 @@
 /*   By: astehl <astehl@student.42vienna.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/01 19:16:38 by astehl            #+#    #+#             */
-/*   Updated: 2024/10/02 10:45:03 by astehl           ###   ########.fr       */
+/*   Updated: 2026/04/21 19:33:30 by astehl           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "libft.h"
@@ -56,7 +56,7 @@ char	*ft_itoa(int n)
 	int		size;
 
 	size = get_size(n);
-	result = malloc(sizeof(char) * (size + 1));
+	result = ft_calloc(size + 1, sizeof(char));
 	if (result != NULL)
 	{
 		result[size] = '\0';

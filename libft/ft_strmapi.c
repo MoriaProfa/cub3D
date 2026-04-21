@@ -6,7 +6,7 @@
 /*   By: astehl <astehl@student.42vienna.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/02 16:25:32 by astehl            #+#    #+#             */
-/*   Updated: 2024/10/02 17:41:04 by astehl           ###   ########.fr       */
+/*   Updated: 2026/04/21 19:43:36 by astehl           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 	char			*result;
 
 	i = 0;
-	result = (char *)malloc(sizeof(char) * (ft_strlen(s) + 1));
+	result = (char *)ft_calloc(ft_strlen(s) + 1, sizeof(char));
 	if (result != NULL)
 	{
 		while (s[i])

@@ -6,7 +6,7 @@
 /*   By: astehl <astehl@student.42vienna.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/13 13:21:18 by astehl            #+#    #+#             */
-/*   Updated: 2024/10/21 16:45:20 by astehl           ###   ########.fr       */
+/*   Updated: 2026/04/21 19:45:05 by astehl           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ char	*ft_strtrim(char const *s1, char const *set)
 		while (start < end && s1[end - 1] && ft_strchr(set, s1[end - 1]))
 			end--;
 	}
-	result = malloc(sizeof(char) * (end - start + 1));
+	result = ft_calloc(end - start + 1, sizeof(char));
 	if (result != NULL)
 		ft_strlcpy(result, &s1[start], end - start + 1);
 	return (result);

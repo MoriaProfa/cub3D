@@ -6,7 +6,7 @@
 /*   By: astehl <astehl@student.42vienna.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/07 16:39:22 by astehl            #+#    #+#             */
-/*   Updated: 2026/04/21 17:44:27 by astehl           ###   ########.fr       */
+/*   Updated: 2026/04/21 19:36:21 by astehl           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,7 +92,7 @@ char	**ft_split(char const *s, char c)
 		size = 0;
 	else
 		size = count_strings(s, c);
-	result = malloc(sizeof (char *) * (size + 1));
+	result = ft_calloc(size + 1, sizeof (char *));
 	if (result != NULL)
 	{
 		result = fill_array(s, c, result, size);

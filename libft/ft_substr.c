@@ -6,7 +6,7 @@
 /*   By: astehl <astehl@student.42vienna.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/13 12:38:05 by astehl            #+#    #+#             */
-/*   Updated: 2026/04/21 17:47:28 by astehl           ###   ########.fr       */
+/*   Updated: 2026/04/21 19:46:10 by astehl           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 		start = strlen;
 	if (len > strlen || start + len > strlen)
 		len = strlen - start;
-	result = malloc(sizeof(char) * (len + 1));
+	result = ft_calloc(len + 1, sizeof(char));
 	if (result != NULL)
 	{
 		while (i < len)
