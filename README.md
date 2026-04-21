@@ -61,6 +61,7 @@ Each configuration element in the *.cub file needs to start with its own type id
 - miniLibX man pages
 - [42 Docs - MiniLibX Tutorial](https://harm-smits.github.io/42docs/libs/minilibx)
 ## Ray-Casting
-- 
+- [Lodes Computer Graphics Tutorial - Raycasting](https://lodev.org/cgtutor/raycasting.html)
+- [Super Fast Ray Casting in Tiled Worlds using DDA (YouTube Video)](https://www.youtube.com/watch?v=NbSee-XM7WA)
 ## AI Usage
 AI was used to clarify Markdown syntax and formatting rules for the README.md file.
