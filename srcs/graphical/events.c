@@ -59,6 +59,26 @@ int	key_press_hook(int keycode, void *param)
 	return (0);
 }
 
+int	mouse_move_hook(int x, int y, void *param)
+{
+	t_game		*game;
+	static int	prev_x = -1;
+	int			diff_x;
+	double		angle;
+
+	(void)y;
+	game = param;
+	if (prev_x != -1)
+	{
+		diff_x = x - prev_x;
+		angle = diff_x / (double)WINDOW_WIDTH * M_PI;
+		rotate_vector(&game->dx, &game->dy, angle);
+		rotate_vector(&game->plane_x, &game->plane_y, angle);
+	}
+	prev_x = x;
+	return (0);
+}
+
 int	loop_hook(void *param)
 {
 	t_game	*game;

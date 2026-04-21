@@ -200,6 +200,7 @@ void cleanup_mlx(t_mlx **ptr);
 // srcs/graphical/events.c
 int key_press_hook(int keycode, void *param);
 int key_release_hook(int keycode, void *param);
+int mouse_move_hook(int x, int y, void *param);
 int loop_hook(void *param);
 
 // srcs/graphical/rendering.c
@@ -212,5 +213,6 @@ t_ray		cast_ray(const t_game *game, double dx, double dy);
 // src/graphical/move_rotate.c
 void	handle_rotation(t_game *game, long loop_time);
 void	handle_movement(t_game *game, int keys_pressed, long loop_time);
+void	rotate_vector(double *x, double *y, double angle);
 
 #endif

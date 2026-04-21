@@ -75,5 +75,6 @@ static void	setup_hooks(t_game *game, t_mlx *mlx)
 	mlx_key_hook(mlx->window, key_release_hook, game);
 	mlx_hook(mlx->window, DestroyNotify, 0, mlx_loop_end, mlx->mlx_ptr);
 	mlx_hook(mlx->window, 2, KeyPressMask, key_press_hook, game);
+	mlx_hook(mlx->window, 6, PointerMotionMask, mouse_move_hook, game);
 	mlx_loop_hook(mlx->mlx_ptr, loop_hook, game);
 }

@@ -13,7 +13,6 @@
 #include "cub3D.h"
 
 static bool	calculate_angle(int keys_pressed, double *angle_ptr);
-static void	rotate_vector(double *x, double *y, double angle);
 static void	step_movement(t_game *game, double dx, double dy);
 
 void	handle_rotation(t_game *game, long loop_time)
@@ -24,16 +23,12 @@ void	handle_rotation(t_game *game, long loop_time)
 	angle = (double)loop_time * ROTATE_SPEED;
 	left_right_pressed = (game->keys_pressed & O_TURN_LEFT)
 		+ (game->keys_pressed & O_TURN_RIGHT);
+	if (left_right_pressed == 0)
+		return ;
 	if (left_right_pressed == O_TURN_LEFT)
-	{
-		rotate_vector(&game->dx, &game->dy, -angle);
-		rotate_vector(&game->plane_x, &game->plane_y, -angle);
-	}
-	else if (left_right_pressed == O_TURN_RIGHT)
-	{
-		rotate_vector(&game->dx, &game->dy, angle);
-		rotate_vector(&game->plane_x, &game->plane_y, angle);
-	}
+		angle = -angle;
+	rotate_vector(&game->dx, &game->dy, angle);
+	rotate_vector(&game->plane_x, &game->plane_y, angle);
 }
 
 void	handle_movement(t_game *game, int keys_pressed, long loop_time)
@@ -110,7 +105,7 @@ static void	step_movement(t_game *game, double dx, double dy)
 	}
 }
 
-static void	rotate_vector(double *x, double *y, double angle)
+void	rotate_vector(double *x, double *y, double angle)
 {
 	double	new_x;
 	double	new_y;
