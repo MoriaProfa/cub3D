@@ -31,10 +31,7 @@ int	main(int argc, char **argv)
 	{
 		return (free_game(&game), 1);
 	}
-	game.dx = cos(game.direction);
-	game.dy = -sin(game.direction);
-	game.plane_x = -game.dy;
-	game.plane_y = game.dx;
+	set_initial_direction(&game);
 	mlx_loop(game.mlx->mlx_ptr);
 	free_game(&game);
 	return (game.exit_ind);

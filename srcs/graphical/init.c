@@ -47,6 +47,14 @@ t_mlx	*init_mlx(t_game *game)
 	return (setup_hooks(game, mlx), mlx);
 }
 
+void	set_initial_direction(t_game *game)
+{
+	game->dx = cos(game->direction);
+	game->dy = -sin(game->direction);
+	game->plane_x = -game->dy;
+	game->plane_y = game->dx;
+}
+
 static bool	init_texture(void *mlx_ptr, t_mlx_image *image, char *path)
 {
 	image->image = mlx_xpm_file_to_image(mlx_ptr, path, &image->width,
