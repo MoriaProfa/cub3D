@@ -6,7 +6,7 @@
 /*   By: astehl <astehl@student.42vienna.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/15 21:52:58 by astehl            #+#    #+#             */
-/*   Updated: 2026/04/21 17:33:13 by astehl           ###   ########.fr       */
+/*   Updated: 2026/04/21 19:49:06 by astehl           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ static char	*ensure_buf_capacity(char *buf, size_t *size, size_t needed)
 			free(buf);
 			return (NULL);
 		}
-		buf = new_buf;	
+		buf = new_buf;
 	}
 	return (buf);
 }
