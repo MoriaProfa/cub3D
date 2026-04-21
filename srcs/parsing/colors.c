@@ -6,7 +6,7 @@
 /*   By: astehl <astehl@student.42vienna.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/15 21:52:47 by astehl            #+#    #+#             */
-/*   Updated: 2026/04/20 17:45:05 by astehl           ###   ########.fr       */
+/*   Updated: 2026/04/21 20:09:44 by astehl           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,7 +90,7 @@ void	convert_and_add_color(t_game *game, char *line, char c)
 	char	**tmp;
 
 	if (check_for_double(game, c))
-		error_exit(game, "No double colors allowed\n");
+		error_exit(game, "Exactly 1 RGB code for ceiling/floor is mandatory\n");
 	tmp = ft_split(line, ',');
 	if (!tmp)
 		error_exit(game, "Color tmp memory allocation failed\n");
