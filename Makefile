@@ -23,7 +23,7 @@ CFILES = cub3D.c \
 SRCDIR = srcs
 OBJDIR = objs
 OFILES = $(patsubst %.c, $(OBJDIR)/%.o, $(CFILES))
-DFILES = $(patsubst %.c, $(OBJDIR)/%.D, $(CFILES))
+DFILES = $(patsubst %.c, $(OBJDIR)/%.d, $(CFILES))
 
 LDFLAGS = -lmlx -lX11 -lXext -lm
 
