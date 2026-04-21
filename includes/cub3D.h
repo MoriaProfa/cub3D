@@ -6,7 +6,7 @@
 /*   By: astehl <astehl@student.42vienna.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/02 18:17:35 by astehl            #+#    #+#             */
-/*   Updated: 2026/04/07 20:48:09 by astehl           ###   ########.fr       */
+/*   Updated: 2026/04/21 20:40:04 by astehl           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,6 @@ typedef struct s_map
 {
 	char	**data;
 	int		min_width;
-	int		max_width;//not sure if we actually need that though
 	int		height;
 }			t_map;
 

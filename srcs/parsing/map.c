@@ -6,7 +6,7 @@
 /*   By: astehl <astehl@student.42vienna.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/15 21:52:53 by astehl            #+#    #+#             */
-/*   Updated: 2026/04/20 17:30:19 by astehl           ###   ########.fr       */
+/*   Updated: 2026/04/21 20:40:28 by astehl           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,8 +113,6 @@ void	second_validity_check_map(t_game *game)
 		len = ft_strlen(map[i]);
 		if (len < game->map.min_width)
 			game->map.min_width = len;
-		if (len > game->map.max_width)
-			game->map.max_width = len;
 		j = -1;
 		while (map[i][++j])
 		{
