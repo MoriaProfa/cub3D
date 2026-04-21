@@ -6,7 +6,7 @@
 /*   By: astehl <astehl@student.42vienna.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/07 16:39:22 by astehl            #+#    #+#             */
-/*   Updated: 2024/10/21 21:29:17 by astehl           ###   ########.fr       */
+/*   Updated: 2026/04/21 17:44:27 by astehl           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,9 +35,11 @@ static size_t	count_strings(char const *s, char c)
 static unsigned int	get_len(char const *s, char c, unsigned int start)
 {
 	size_t	len;
+	size_t	strlen;
 
 	len = 0;
-	while (s[start] != c && s[start] != '\0' && len <= ft_strlen(s))
+	strlen = ft_strlen(s);
+	while (s[start] != c && s[start] != '\0' && len <= strlen)
 	{
 		len++;
 		start++;
