@@ -6,7 +6,7 @@
 /*   By: astehl <astehl@student.42vienna.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/15 21:52:58 by astehl            #+#    #+#             */
-/*   Updated: 2026/04/21 19:49:06 by astehl           ###   ########.fr       */
+/*   Updated: 2026/04/21 20:17:45 by astehl           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,7 +116,7 @@ void	read_extract_and_validate_file(t_game *game, char *fn)
 	fl = ft_strlen(fn);
 	if (fl < 5 || fn[fl - 5] == '/' || ft_strncmp(&fn[fl - 4], ".cub", 5) != 0)
 		error_exit(game, "Invalid filename\n");
-	fd = open(fn, O_RDONLY);
+	fd = open(fn, O_RDONLY | O_NOFOLLOW);
 	if (fd < 0)
 		(perror("Error\nOpening file failed"), exit(1));
 	buf = read_into_buffer(fd);
