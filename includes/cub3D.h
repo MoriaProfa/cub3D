@@ -18,6 +18,9 @@
 
 # define FRAMES_PER_SECOND 60
 
+# define ROTATE_SPEED 0.0000015
+# define MOVE_SPEED 0.000003
+
 # include "../libft/libft.h"
 # include <X11/keysym.h>
 # include <errno.h>
