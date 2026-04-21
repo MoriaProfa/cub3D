@@ -6,7 +6,7 @@
 /*   By: astehl <astehl@student.42vienna.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/15 21:52:58 by astehl            #+#    #+#             */
-/*   Updated: 2026/04/20 17:30:51 by astehl           ###   ########.fr       */
+/*   Updated: 2026/04/21 17:33:13 by astehl           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,21 @@
 
 static char	*ensure_buf_capacity(char *buf, size_t *size, size_t needed)
 {
-	if (needed <= *size)
+	size_t	old_size;
+	char	*new_buf;
+
+	if (*size < needed)
 	{
-		buf = grow_array(buf, *size, *size * 2, sizeof(char));
-		if (!buf)
+		old_size = *size;
+		while (*size <= needed)
+			*size *= 2;
+		new_buf = grow_array(buf, old_size, *size, sizeof(char));
+		if (!new_buf)
+		{
+			free(buf);
 			return (NULL);
-		*size *= 2;
+		}
+		buf = new_buf;	
 	}
 	return (buf);
 }
@@ -40,7 +49,7 @@ static char	*read_into_buffer(int fd)
 	nb_read = read(fd, tmp, sizeof(tmp));
 	while (nb_read > 0)
 	{
-		buf = ensure_buf_capacity(buf, &buf_size, total + nb_read);
+		buf = ensure_buf_capacity(buf, &buf_size, total + nb_read + 1);
 		if (!buf)
 			return (NULL);
 		ft_memcpy(buf + total, tmp, nb_read);
