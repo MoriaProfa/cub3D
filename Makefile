@@ -12,6 +12,7 @@ CFILES = cub3D.c \
 	parsing/paths.c \
 	parsing/player.c \
 	utils/array_helpers.c \
+	utils/cub3d_atoi.c \
 	utils/exit.c \
 	graphical/init.c \
 	graphical/free.c \

@@ -6,7 +6,7 @@
 /*   By: astehl <astehl@student.42vienna.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/02 18:17:35 by astehl            #+#    #+#             */
-/*   Updated: 2026/04/21 20:40:04 by astehl           ###   ########.fr       */
+/*   Updated: 2026/04/23 14:54:33 by astehl           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -197,6 +197,9 @@ void					free_array(char **array);
 void					free_game(t_game *game);
 void					close_game(t_game *game);
 void					error_exit(t_game *game, char *message);
+
+// srcs/utils/cub3d_atoi.c
+int						cub3d_atoi(const char *nptr);
 
 // srcs/graphical/init.c
 t_mlx					*init_mlx(t_game *game, char **envp);
