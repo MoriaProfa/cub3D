@@ -6,7 +6,7 @@
 /*   By: astehl <astehl@student.42vienna.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/15 21:52:58 by astehl            #+#    #+#             */
-/*   Updated: 2026/04/21 20:17:45 by astehl           ###   ########.fr       */
+/*   Updated: 2026/04/23 21:35:40 by astehl           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ static void	add_game_config_data(t_game *game, char *line)
 	checks_complete(game);
 	while (line[i] == ' ')
 		i++;
-	if (line[i + 1] == '\0' && !game->checks.complete)
+	if (line[i/* + 1*/] == '\0' && !game->checks.complete)
 		return ;
 	else if (line[i] == 'N' && line[i + 1] == 'O' && line[i + 2] == ' ')
 		check_and_add_path(game, &line[i + 3], 'N');
