@@ -27,13 +27,11 @@ make re
 ```  
 
 ## Execution
-After compiling the program named cub3D must expect a file with configuration elements and a map in format *.cub to be able to be executed properly. Some already prepared *.cub files can be found in the scenes folder.    
+After compiling the program named cub3D must expect a file with configuration elements and a map in format *.cub to be able to be executed properly.  
+Some already prepared *.cub files can be found in the scenes folder.    
 ```bash
-# Run mandatory version
+# Run
 ./cub3D scenes/minimalist.cub
-
-# Run bonus version
-./cub3D_bonus scenes/minimalist.cub
 ```  
 
 ## Configuration and map file format (*.cub)
@@ -53,6 +51,7 @@ Each configuration element in the *.cub file needs to start with its own type id
 - needs to be surrounded by walls
 - only one player spawn position
 - empty lines are invalid
+- spaces are valid parts and up to project creators to handle
 
 # **Resources**
 ## Markdown
