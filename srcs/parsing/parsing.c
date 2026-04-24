@@ -6,7 +6,7 @@
 /*   By: astehl <astehl@student.42vienna.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/15 21:52:58 by astehl            #+#    #+#             */
-/*   Updated: 2026/04/23 21:35:40 by astehl           ###   ########.fr       */
+/*   Updated: 2026/04/24 18:38:54 by astehl           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,21 @@ static char	*read_into_buffer(int fd)
 	return (buf);
 }
 
+static char *handle_lead_trail_spaces(char *line)
+{
+	int	i;
+	int	len;
+
+	i = 0;
+	len = ft_strlen(line);
+	while (line[i] == ' ')
+		i++;
+	while (line[len - 1] == ' ')
+		len--;
+	line[len] = '\0';
+	return (&line[i]);
+} 
+
 static void	add_game_config_data(t_game *game, char *line)
 {
 	int	i;
@@ -70,16 +85,16 @@ static void	add_game_config_data(t_game *game, char *line)
 	checks_complete(game);
 	while (line[i] == ' ')
 		i++;
-	if (line[i/* + 1*/] == '\0' && !game->checks.complete)
+	if (line[i] == '\0' || game->checks.complete)
 		return ;
 	else if (line[i] == 'N' && line[i + 1] == 'O' && line[i + 2] == ' ')
-		check_and_add_path(game, &line[i + 3], 'N');
+		check_and_add_path(game, handle_lead_trail_spaces(&line[i + 3]), 'N');
 	else if (line[i] == 'E' && line[i + 1] == 'A' && line[i + 2] == ' ')
-		check_and_add_path(game, &line[i + 3], 'E');
+		check_and_add_path(game, handle_lead_trail_spaces(&line[i + 3]), 'E');
 	else if (line[i] == 'S' && line[i + 1] == 'O' && line[i + 2] == ' ')
-		check_and_add_path(game, &line[i + 3], 'S');
+		check_and_add_path(game, handle_lead_trail_spaces(&line[i + 3]), 'S');
 	else if (line[i] == 'W' && line[i + 1] == 'E' && line[i + 2] == ' ')
-		check_and_add_path(game, &line[i + 3], 'W');
+		check_and_add_path(game, handle_lead_trail_spaces(&line[i + 3]), 'W');
 	else if (line[i] == 'F' && line[i + 1] == ' ')
 		convert_and_add_color(game, &line[i + 2], 'F');
 	else if (line[i] == 'C' && line[i + 1] == ' ')
