@@ -6,7 +6,7 @@
 /*   By: astehl <astehl@student.42vienna.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/02 18:17:35 by astehl            #+#    #+#             */
-/*   Updated: 2026/04/24 19:25:05 by astehl           ###   ########.fr       */
+/*   Updated: 2026/04/24 19:44:16 by astehl           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -182,6 +182,7 @@ void					second_validity_check_map(t_game *game);
 void					read_extract_and_validate_file(t_game *game, char *fn);
 
 // srcs/parsing/paths.c
+char					*handle_lead_trail_spaces(char *line);
 void					check_and_add_path(t_game *game, char *path, char c);
 
 // srcs/parsing/player.c

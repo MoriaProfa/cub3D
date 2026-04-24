@@ -6,11 +6,26 @@
 /*   By: astehl <astehl@student.42vienna.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/15 21:53:04 by astehl            #+#    #+#             */
-/*   Updated: 2026/04/20 17:21:50 by astehl           ###   ########.fr       */
+/*   Updated: 2026/04/24 19:43:56 by astehl           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
+
+char	*handle_lead_trail_spaces(char *line)
+{
+	int	i;
+	int	len;
+
+	i = 0;
+	len = ft_strlen(line);
+	while (line[i] == ' ')
+		i++;
+	while (line[len - 1] == ' ')
+		len--;
+	line[len] = '\0';
+	return (&line[i]);
+}
 
 static bool	compare_pathfiles(t_game *game)
 {

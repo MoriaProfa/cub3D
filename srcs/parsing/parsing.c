@@ -6,7 +6,7 @@
 /*   By: astehl <astehl@student.42vienna.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/15 21:52:58 by astehl            #+#    #+#             */
-/*   Updated: 2026/04/24 19:23:26 by astehl           ###   ########.fr       */
+/*   Updated: 2026/04/24 19:43:34 by astehl           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,21 +60,6 @@ static char	*read_into_buffer(int fd)
 		return (free(buf), NULL);
 	buf[total] = '\0';
 	return (buf);
-}
-
-static char	*handle_lead_trail_spaces(char *line)
-{
-	int	i;
-	int	len;
-
-	i = 0;
-	len = ft_strlen(line);
-	while (line[i] == ' ')
-		i++;
-	while (line[len - 1] == ' ')
-		len--;
-	line[len] = '\0';
-	return (&line[i]);
 }
 
 static void	add_game_config_data(t_game *game, char *line)
