@@ -62,7 +62,7 @@ static char	*read_into_buffer(int fd)
 	return (buf);
 }
 
-static char *handle_lead_trail_spaces(char *line)
+static char	*handle_lead_trail_spaces(char *line)
 {
 	int	i;
 	int	len;
@@ -75,7 +75,7 @@ static char *handle_lead_trail_spaces(char *line)
 		len--;
 	line[len] = '\0';
 	return (&line[i]);
-} 
+}
 
 static void	add_game_config_data(t_game *game, char *line)
 {
