@@ -6,7 +6,7 @@
 /*   By: astehl <astehl@student.42vienna.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/15 21:52:58 by astehl            #+#    #+#             */
-/*   Updated: 2026/04/24 18:38:54 by astehl           ###   ########.fr       */
+/*   Updated: 2026/04/24 19:23:26 by astehl           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,7 +112,7 @@ static void	extract_data(t_game *game, char *buf)
 		free(buf);
 		error_exit(game, "Game data memory allocation (split) failed\n");
 	}
-	game->map.data = ft_split(find_map_start(buf), '\n');
+	game->map.data = ft_split(find_map_start(game, buf), '\n');
 	free(buf);
 	if (!game->map.data)
 		error_exit(game, "Map data memory allocation (split) failed\n");
@@ -140,7 +140,7 @@ void	read_extract_and_validate_file(t_game *game, char *fn)
 		error_exit(game, "Buffer memory allocation failed\n");
 	if (ft_strlen(buf) < 61)
 		(free(buf), error_exit(game, "File is empty/too small\n"));
-	first_validity_check_map(game, find_map_start(buf), buf);
+	first_validity_check_map(game, find_map_start(game, buf), buf);
 	extract_data(game, buf);
 	second_validity_check_map(game);
 	check_player(game);

@@ -6,7 +6,7 @@
 /*   By: astehl <astehl@student.42vienna.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/02 18:17:35 by astehl            #+#    #+#             */
-/*   Updated: 2026/04/23 14:54:33 by astehl           ###   ########.fr       */
+/*   Updated: 2026/04/24 19:25:05 by astehl           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -173,7 +173,7 @@ void					checks_complete(t_game *game);
 void					convert_and_add_color(t_game *game, char *line, char c);
 
 // srcs/parsing/map.c
-char					*find_map_start(char *buf);
+char					*find_map_start(t_game *game, char *buf);
 void					first_validity_check_map(t_game *game, char *map,
 							char *buf);
 void					second_validity_check_map(t_game *game);

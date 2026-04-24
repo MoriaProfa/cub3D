@@ -6,7 +6,7 @@
 /*   By: astehl <astehl@student.42vienna.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/15 21:52:53 by astehl            #+#    #+#             */
-/*   Updated: 2026/04/21 20:40:28 by astehl           ###   ########.fr       */
+/*   Updated: 2026/04/24 19:28:54 by astehl           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ static bool	check_for_end(char *map, int i)
 	return (end);
 }
 
-char	*find_map_start(char *buf)
+char	*find_map_start(t_game *game, char *buf)
 {
 	int	i;
 	int	lines;
@@ -48,6 +48,8 @@ char	*find_map_start(char *buf)
 			return (&buf[i]);
 		}
 	}
+	free(buf);
+	error_exit(game, "Config file incomplete.\n");
 	return (NULL);
 }
 
