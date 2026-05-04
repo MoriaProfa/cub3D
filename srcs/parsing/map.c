@@ -50,7 +50,6 @@ char	*find_map_start(t_game *game, char *buf)
 	}
 	free(buf);
 	error_exit(game, "Config file incomplete.\n");
-	return (NULL);
 }
 
 static void	check_surrounding_tiles(t_game *game, int i, int j,

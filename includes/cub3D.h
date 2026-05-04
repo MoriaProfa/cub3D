@@ -196,8 +196,9 @@ void					free_array(char **array);
 
 // srcs/utils/exit.c
 void					free_game(t_game *game);
-void					close_game(t_game *game);
-void					error_exit(t_game *game, char *message);
+void					close_game(t_game *game) __attribute__((noreturn));
+void					error_exit(t_game *game,
+							char *message) __attribute__((noreturn));
 
 // srcs/utils/cub3d_atoi.c
 int						cub3d_atoi(const char *nptr);

@@ -112,6 +112,7 @@ void	read_extract_and_validate_file(t_game *game, char *fn)
 	int		fl;
 	int		fd;
 	char	*buf;
+	char	*map_start;
 
 	fl = ft_strlen(fn);
 	if (fl < 5 || fn[fl - 5] == '/' || ft_strncmp(&fn[fl - 4], ".cub", 5) != 0)
@@ -125,7 +126,8 @@ void	read_extract_and_validate_file(t_game *game, char *fn)
 		error_exit(game, "Buffer memory allocation failed\n");
 	if (ft_strlen(buf) < 61)
 		(free(buf), error_exit(game, "File is empty/too small\n"));
-	first_validity_check_map(game, find_map_start(game, buf), buf);
+	map_start = find_map_start(game, buf);
+	first_validity_check_map(game, map_start, buf);
 	extract_data(game, buf);
 	second_validity_check_map(game);
 	check_player(game);
