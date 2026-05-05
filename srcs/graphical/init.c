@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bgebetsb <bgebetsb@student.42vienna.com>   +#+  +:+       +#+        */
+/*   By: astehl <astehl@student.42vienna.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/20 03:47:34 by bgebetsb          #+#    #+#             */
-/*   Updated: 2026/04/20 03:47:41 by bgebetsb         ###   ########.fr       */
+/*   Updated: 2026/05/05 20:58:29 by astehl           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,24 +26,24 @@ t_mlx	*init_mlx(t_game *game, char **envp)
 	paths = &game->paths;
 	mlx = ft_calloc(1, sizeof(t_mlx));
 	if (!mlx)
-		return (perror("cub3D: malloc"), NULL);
+		return (perror("Error\nMlx malloc"), NULL);
 	mlx->mlx_ptr = mlx_init();
 	if (!mlx->mlx_ptr)
-		return (perror("cub3D: mlx_init"), free(mlx), NULL);
+		return (perror("Error\nmlx_init"), free(mlx), NULL);
 	if (!init_texture(mlx->mlx_ptr, &mlx->textures.north, paths->north))
-		return (perror("cub3D: north texture"), cleanup_mlx(&mlx), NULL);
+		return (perror("Error\nmlx: north texture"), cleanup_mlx(&mlx), NULL);
 	if (!init_texture(mlx->mlx_ptr, &mlx->textures.east, paths->east))
-		return (perror("cub3D: east texture"), cleanup_mlx(&mlx), NULL);
+		return (perror("Error\nmlx: east texture"), cleanup_mlx(&mlx), NULL);
 	if (!init_texture(mlx->mlx_ptr, &mlx->textures.south, paths->south))
-		return (perror("cub3D: south texture"), cleanup_mlx(&mlx), NULL);
+		return (perror("Error\nmlx: south texture"), cleanup_mlx(&mlx), NULL);
 	if (!init_texture(mlx->mlx_ptr, &mlx->textures.west, paths->west))
-		return (perror("cub3D: west texture"), cleanup_mlx(&mlx), NULL);
+		return (perror("Error\nmlx: west texture"), cleanup_mlx(&mlx), NULL);
 	if (!init_image(mlx->mlx_ptr, &mlx->main_img))
-		return (perror("cub3D: init image"), cleanup_mlx(&mlx), NULL);
+		return (perror("Error\nmlx: init image"), cleanup_mlx(&mlx), NULL);
 	mlx->window = mlx_new_window(mlx->mlx_ptr, WINDOW_WIDTH, WINDOW_HEIGHT,
 			"cub3D");
 	if (!mlx->window)
-		return (perror("cub3D: mlx_new_window"), cleanup_mlx(&mlx), NULL);
+		return (perror("Error\nmlx: mlx_new_window"), cleanup_mlx(&mlx), NULL);
 	return (setup_hooks(game, mlx, envp), mlx);
 }
 

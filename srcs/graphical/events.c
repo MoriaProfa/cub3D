@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   events.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bgebetsb <bgebetsb@student.42vienna.com>   +#+  +:+       +#+        */
+/*   By: astehl <astehl@student.42vienna.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/20 03:48:40 by bgebetsb          #+#    #+#             */
-/*   Updated: 2026/04/20 03:48:42 by bgebetsb         ###   ########.fr       */
+/*   Updated: 2026/05/05 20:21:53 by astehl           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,7 +98,7 @@ int	loop_hook(void *param)
 	game = (t_game *)param;
 	loop_time = time_diff();
 	if (loop_time == -1)
-		return (game->exit_ind = 1, perror("cub3D: gettimeofday"),
+		return (game->exit_ind = 1, perror("Error\ngettimeofday"),
 			mlx_loop_end(param), 1);
 	if (loop_time < 1000000 / FRAMES_PER_SECOND)
 		return (0);

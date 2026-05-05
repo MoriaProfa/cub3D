@@ -6,11 +6,22 @@
 /*   By: astehl <astehl@student.42vienna.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/15 21:52:47 by astehl            #+#    #+#             */
-/*   Updated: 2026/04/23 14:53:33 by astehl           ###   ########.fr       */
+/*   Updated: 2026/05/05 21:01:35 by astehl           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
+
+static char	*handle_trailing_spaces(char *line)
+{
+	int	len;
+
+	len = ft_strlen(line);
+	while (line[len - 1] == ' ')
+		len--;
+	line[len] = '\0';
+	return (line);
+}
 
 static void	check_color_validity(t_game *game, char **tmp)
 {
@@ -23,6 +34,7 @@ static void	check_color_validity(t_game *game, char **tmp)
 		j = 0;
 		while (tmp[i][j] == ' ')
 			j++;
+		handle_trailing_spaces(tmp[i]);
 		if (tmp[i][j] == '+')
 			j++;
 		while (tmp[i][j])

@@ -6,7 +6,7 @@
 /*   By: astehl <astehl@student.42vienna.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/15 21:53:04 by astehl            #+#    #+#             */
-/*   Updated: 2026/04/24 19:43:56 by astehl           ###   ########.fr       */
+/*   Updated: 2026/05/05 20:57:24 by astehl           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,8 +88,6 @@ void	check_and_add_path(t_game *game, char *path, char c)
 		error_exit(game, "Path is too short\n");
 	if (path[len - 5] == '/')
 		error_exit(game, "Path is not valid\n");
-	if (ft_strchr(path, ' '))
-		error_exit(game, "Path cannot contain space(s)\n");
 	if (ft_strncmp(&path[len - 4], ".xpm", 5) != 0)
 		error_exit(game, "Path needs to be a .xpm file\n");
 	add_path(game, path, c);
